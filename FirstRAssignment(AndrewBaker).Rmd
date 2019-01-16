@@ -49,14 +49,16 @@ y+x+z
 (x +10 * y)/2
 ```
 # Task 8
-
+```{r}
+library("tidyverse")
+library("dplyr")
 firstSequence = seq(from = 1, to = 30, by = 1)
 characterSequence = c("Andrew", "Winnie", "juan")
 
 length(firstSequence)
 length(characterSequence)
 sum(firstSequence)
-sum(characterSequence)
+length(characterSequence)
 
 # Task 9
 
@@ -75,7 +77,7 @@ matrix1
 
 dataFrame1 = data.frame(matrix1, row.names = characterSequence)
 dataFrame1
-
+```
 # Task 11
 
 # Loading the Data
@@ -89,14 +91,17 @@ chineseData = read.csv("China_EO_49to17.csv")
 tibledChineseData = as_tibble(chineseData)
 ```
 # Task 13
-
+```{r}
 library("tidyverse")
 library("dplyr")
 chineseData = read.csv("China_EO_49to17.csv")
 tibledChineseData = as_tibble(chineseData)
-
+```
 # Task 14
-arrange(tibledChineseData,desc(year)
+```{r}
+library("tidyverse")
+library("dplyr")
+arrange(tibledChineseData,desc(Year))
 
 
 newFilteredChineseData = filter(select(tibledChineseData,c("Year","Shanghai_Enterprise",
@@ -107,3 +112,4 @@ newFilteredChineseData
 mutatedData = mutate(newFilteredChineseData,output_ratio = Beijing_Output/Shanghai_Output)
 
 mutatedData
+```

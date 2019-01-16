@@ -263,19 +263,61 @@ y+x+z</code></pre>
 </div>
 <div id="task-8" class="section level1">
 <h1>Task 8</h1>
-<p>firstSequence = seq(from = 1, to = 30, by = 1) characterSequence = c(“Andrew”, “Winnie”, “juan”)</p>
-<p>length(firstSequence) length(characterSequence) sum(firstSequence) sum(characterSequence)</p>
-</div>
-<div id="task-9" class="section level1">
-<h1>Task 9</h1>
-<p>vector1 = seq(from = 1, to = 5, by = 1) vector2 = seq(from = 6, to = 10, by = 1)</p>
-<p>vector1 + vector2 VectorMult = vector1 * vector2</p>
-</div>
-<div id="task-10" class="section level1">
-<h1>Task 10</h1>
-<p>combinedVector = c(vector1,vector2)</p>
-<p>matrix1 = rbind(vector1, vector2, VectorMult) matrix1</p>
-<p>dataFrame1 = data.frame(matrix1, row.names = characterSequence) dataFrame1</p>
+<pre class="r"><code>library(&quot;tidyverse&quot;)</code></pre>
+<pre><code>## Warning: package 'tidyverse' was built under R version 3.5.2</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------------------------------------------------------------------------ tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.1.0     v purrr   0.2.5
+## v tibble  1.4.2     v dplyr   0.7.8
+## v tidyr   0.8.2     v stringr 1.3.1
+## v readr   1.3.1     v forcats 0.3.0</code></pre>
+<pre><code>## Warning: package 'ggplot2' was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package 'tibble' was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package 'tidyr' was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package 'readr' was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package 'purrr' was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package 'dplyr' was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package 'stringr' was built under R version 3.5.2</code></pre>
+<pre><code>## Warning: package 'forcats' was built under R version 3.5.2</code></pre>
+<pre><code>## -- Conflicts --------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(&quot;dplyr&quot;)
+firstSequence = seq(from = 1, to = 30, by = 1)
+characterSequence = c(&quot;Andrew&quot;, &quot;Winnie&quot;, &quot;juan&quot;)
+
+length(firstSequence)</code></pre>
+<pre><code>## [1] 30</code></pre>
+<pre class="r"><code>length(characterSequence)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>sum(firstSequence)</code></pre>
+<pre><code>## [1] 465</code></pre>
+<pre class="r"><code>length(characterSequence)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code># Task 9
+
+vector1 = seq(from = 1, to = 5, by = 1)
+vector2 = seq(from = 6, to = 10, by = 1)
+
+vector1 + vector2</code></pre>
+<pre><code>## [1]  7  9 11 13 15</code></pre>
+<pre class="r"><code>VectorMult = vector1 * vector2
+
+# Task 10
+
+combinedVector = c(vector1,vector2)
+
+matrix1 = rbind(vector1, vector2, VectorMult)
+matrix1</code></pre>
+<pre><code>##            [,1] [,2] [,3] [,4] [,5]
+## vector1       1    2    3    4    5
+## vector2       6    7    8    9   10
+## VectorMult    6   14   24   36   50</code></pre>
+<pre class="r"><code>dataFrame1 = data.frame(matrix1, row.names = characterSequence)
+dataFrame1</code></pre>
+<pre><code>##        X1 X2 X3 X4 X5
+## Andrew  1  2  3  4  5
+## Winnie  6  7  8  9 10
+## juan    6 14 24 36 50</code></pre>
 </div>
 <div id="task-11" class="section level1">
 <h1>Task 11</h1>
@@ -292,15 +334,105 @@ tibledChineseData = as_tibble(chineseData)</code></pre>
 </div>
 <div id="task-13" class="section level1">
 <h1>Task 13</h1>
-<p>library(“tidyverse”) library(“dplyr”) chineseData = read.csv(“China_EO_49to17.csv”) tibledChineseData = as_tibble(chineseData)</p>
+<pre class="r"><code>library(&quot;tidyverse&quot;)
+library(&quot;dplyr&quot;)
+chineseData = read.csv(&quot;China_EO_49to17.csv&quot;)
+tibledChineseData = as_tibble(chineseData)</code></pre>
 </div>
 <div id="task-14" class="section level1">
 <h1>Task 14</h1>
-<p>arrange(tibledChineseData,desc(year)</p>
-<p>newFilteredChineseData = filter(select(tibledChineseData,c(“Year”,“Shanghai_Enterprise”, “Shanghai_Output”,“Beijing_Enterprise”,“Beijing_Output”)), Year &gt;= 2000)</p>
-<p>newFilteredChineseData</p>
-<p>mutatedData = mutate(newFilteredChineseData,output_ratio = Beijing_Output/Shanghai_Output)</p>
-<p>mutatedData</p>
+<pre class="r"><code>library(&quot;tidyverse&quot;)
+library(&quot;dplyr&quot;)
+arrange(tibledChineseData,desc(Year))</code></pre>
+<pre><code>## Warning: package 'bindrcpp' was built under R version 3.5.2</code></pre>
+<pre><code>## # A tibble: 69 x 63
+##     Year Beijing_Enterpr~ Beijing_Output Tianjin_Enterpr~ Tianjin_Output
+##    &lt;int&gt;            &lt;int&gt;          &lt;dbl&gt;            &lt;int&gt;          &lt;dbl&gt;
+##  1  2017             3231            NA              4286            NA 
+##  2  2016             3340         18087.             5203         27402.
+##  3  2015             3548         17450.             5525         28017.
+##  4  2014             3686         18453.             5501         28079.
+##  5  2013             3641         17371.             5511         26400.
+##  6  2012             3692         15596.             5342         23428.
+##  7  2011             3746         14514.             5013         20863.
+##  8  2010             6884         13700.             7947         16752.
+##  9  2009             6890         11039.             8326         13084.
+## 10  2008             7205         10413.             7950         12503.
+## # ... with 59 more rows, and 58 more variables: Hebei_Enterprise &lt;int&gt;,
+## #   Hebei_Output &lt;dbl&gt;, Shanxi_Enterprise &lt;int&gt;, Shanxi_Output &lt;dbl&gt;,
+## #   InnerMongolia_Enterprise &lt;int&gt;, InnerMongolia_Output &lt;dbl&gt;,
+## #   Liaoning_Enterprise &lt;int&gt;, Liaoning_Output &lt;dbl&gt;,
+## #   Jilin_Enterprise &lt;int&gt;, Jilin_Output &lt;dbl&gt;,
+## #   Heilongjiang_Enterprise &lt;int&gt;, Heilongjiang_Output &lt;dbl&gt;,
+## #   Shanghai_Enterprise &lt;int&gt;, Shanghai_Output &lt;dbl&gt;,
+## #   Jiangsu_Enterprise &lt;int&gt;, Jiangsu_Output &lt;dbl&gt;,
+## #   Zhejiang_Enterprise &lt;int&gt;, Zhejiang_Output &lt;dbl&gt;,
+## #   Anhui_Enterprise &lt;int&gt;, Anhui_Output &lt;dbl&gt;, Fujian_Enterprise &lt;int&gt;,
+## #   Fujian_Output &lt;dbl&gt;, Jiangxi_Enterprise &lt;int&gt;, Jiangxi_Output &lt;dbl&gt;,
+## #   Shandong_Enterprise &lt;int&gt;, Shandong_Output &lt;dbl&gt;,
+## #   Henan_Enterprise &lt;int&gt;, Henan_Output &lt;dbl&gt;, Hubei_Enterprise &lt;int&gt;,
+## #   Hubei_Output &lt;dbl&gt;, Hunan_Enterprises &lt;int&gt;, Hunan_Output &lt;dbl&gt;,
+## #   Guangdong_Enterprise &lt;int&gt;, Guangdong_Output &lt;dbl&gt;,
+## #   Guangxi_Enterprise &lt;int&gt;, Guangxi_Output &lt;dbl&gt;,
+## #   Hainan_Enterprise &lt;int&gt;, Hainan_Output &lt;dbl&gt;,
+## #   Chongqing_Enterprise &lt;int&gt;, Chongqing_Output &lt;dbl&gt;,
+## #   Sichuan_Enterprise &lt;int&gt;, Sichuan_Output &lt;dbl&gt;,
+## #   Guizhou_Enterprise &lt;int&gt;, Guizhou_Output &lt;dbl&gt;,
+## #   Yunnan_Enterprise &lt;int&gt;, Yunnan_Output &lt;dbl&gt;, Tibet_Enterprise &lt;int&gt;,
+## #   Tibet_Output &lt;dbl&gt;, Shaanxi_Enterprise &lt;int&gt;, Shaanxi_Output &lt;dbl&gt;,
+## #   Gansu_Enterprise &lt;int&gt;, Gansu_Output &lt;dbl&gt;, Qinghai_Enterprise &lt;int&gt;,
+## #   Qinghai_Output &lt;dbl&gt;, Ningxia_Enterprise &lt;int&gt;, Ningxia_Output &lt;dbl&gt;,
+## #   Xinjiang_Enterprise &lt;int&gt;, Xinjiang_Output &lt;dbl&gt;</code></pre>
+<pre class="r"><code>newFilteredChineseData = filter(select(tibledChineseData,c(&quot;Year&quot;,&quot;Shanghai_Enterprise&quot;,
+&quot;Shanghai_Output&quot;,&quot;Beijing_Enterprise&quot;,&quot;Beijing_Output&quot;)), Year &gt;= 2000)
+
+newFilteredChineseData</code></pre>
+<pre><code>## # A tibble: 18 x 5
+##     Year Shanghai_Enterpri~ Shanghai_Output Beijing_Enterpr~ Beijing_Output
+##    &lt;int&gt;              &lt;int&gt;           &lt;dbl&gt;            &lt;int&gt;          &lt;dbl&gt;
+##  1  2000               8574           6205.             4572          2565.
+##  2  2001               9762           7004.             4356          2909.
+##  3  2002              10057           7741.             4551          3173.
+##  4  2003              11098          10343.             4019          3810.
+##  5  2004              15766          12885.             6871          4881.
+##  6  2005              14809          15768.             6300          6946.
+##  7  2006              14404          18573.             6400          8210 
+##  8  2007              15099          22260.             6397          9648.
+##  9  2008              18792          25121.             7205         10413.
+## 10  2009              17906          24091.             6890         11039.
+## 11  2010              16684          30114.             6884         13700.
+## 12  2011               9962          32445.             3746         14514.
+## 13  2012               9772          31548.             3692         15596.
+## 14  2013               9796          32089.             3641         17371.
+## 15  2014               9469          32665.             3686         18453.
+## 16  2015               8994          31050.             3548         17450.
+## 17  2016               8351          31136.             3340         18087.
+## 18  2017               8122          36094.             3231            NA</code></pre>
+<pre class="r"><code>mutatedData = mutate(newFilteredChineseData,output_ratio = Beijing_Output/Shanghai_Output)
+
+mutatedData</code></pre>
+<pre><code>## # A tibble: 18 x 6
+##     Year Shanghai_Enterp~ Shanghai_Output Beijing_Enterpr~ Beijing_Output
+##    &lt;int&gt;            &lt;int&gt;           &lt;dbl&gt;            &lt;int&gt;          &lt;dbl&gt;
+##  1  2000             8574           6205.             4572          2565.
+##  2  2001             9762           7004.             4356          2909.
+##  3  2002            10057           7741.             4551          3173.
+##  4  2003            11098          10343.             4019          3810.
+##  5  2004            15766          12885.             6871          4881.
+##  6  2005            14809          15768.             6300          6946.
+##  7  2006            14404          18573.             6400          8210 
+##  8  2007            15099          22260.             6397          9648.
+##  9  2008            18792          25121.             7205         10413.
+## 10  2009            17906          24091.             6890         11039.
+## 11  2010            16684          30114.             6884         13700.
+## 12  2011             9962          32445.             3746         14514.
+## 13  2012             9772          31548.             3692         15596.
+## 14  2013             9796          32089.             3641         17371.
+## 15  2014             9469          32665.             3686         18453.
+## 16  2015             8994          31050.             3548         17450.
+## 17  2016             8351          31136.             3340         18087.
+## 18  2017             8122          36094.             3231            NA 
+## # ... with 1 more variable: output_ratio &lt;dbl&gt;</code></pre>
 </div>
 
 
